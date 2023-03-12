@@ -9,8 +9,8 @@ export default class MyDocument extends Document {
           <link rel="preload" href="/fonts/GTWalsheimPro-Medium.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
           <link rel="preload" href="/fonts/GTWalsheimPro-Bold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          {/* <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} /> */}
-          {/* <script // eslint-disable-next-line
+          <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`} />
+          <script // eslint-disable-next-line
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
@@ -21,7 +21,7 @@ export default class MyDocument extends Document {
             });
           `,
             }}
-          /> */}
+          />
           {/* <meta name="google-site-verification" content="JPPz1wsoh_EhDrgTk6InHZrGEricNOa6zDJCTbIxe20" /> */}
           {/* <link rel="webmention" href="https://webmention.io/zhaoguilv.com/webmention" /> */}
           {/* <link rel="pingback" href="https://webmention.io/zhaoguilv.com/xmlrpc" /> */}
