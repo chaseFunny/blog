@@ -2,12 +2,13 @@
 const GitHub = require('github-api')
 const fs = require('fs-extra')
 const path = require('path')
+const {REMOTE_TOKEN} = require('../token')
 
 let { GH_TOKEN, GH_USER, GH_PROJECT_NAME } = process.env
 if(!GH_USER) {
-  GH_USER = 'chaseFunny'
-  GH_PROJECT_NAME = 'blog'
-  GH_TOKEN = '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'
+  GH_USER = REMOTE_TOKEN.GH_USER
+  GH_PROJECT_NAME = REMOTE_TOKEN.GH_PROJECT_NAME
+  GH_TOKEN = REMOTE_TOKEN.GH_TOKEN
 }
 const gh = new GitHub({
   token: GH_TOKEN,

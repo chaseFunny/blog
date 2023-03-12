@@ -5,154 +5,239 @@
   tags: ["React","Next.js"]
 ---
 
-# Next应用程序开发
+## Next应用程序开发
+
 要从头开始使用 React 构建一个完整的 Web 应用程序，您需要考虑许多重要的细节：
-● 代码必须使用像 webpack 这样的捆绑器进行捆绑，并使用像 Babel 这样的编译器进行转换。 
-● 您需要进行生产优化，例如代码拆分。
-● 您可能希望静态预呈现某些页面以提高性能和 SEO。
-● 您可能还想使用服务器端呈现或客户端呈现。 您可能需要编写一些服务器端代码来将您的 React 应用程序连接到您的数据存储。
+
+- 代码必须使用像 webpack 这样的捆绑器进行捆绑，并使用像 Babel 这样的编译器进行转换。 
+- 您需要进行生产优化，例如代码拆分。
+- 您可能希望静态预呈现某些页面以提高性能和 SEO。
+- 您可能还想使用服务器端呈现或客户端呈现。 您可能需要编写一些服务器端代码来将您的 React 应用程序连接到您的数据存储。
+
 Next.js 为上述所有问题提供了解决方案。但更重要的是，它让你和你的团队在构建 React 应用程序时获得成功。 Next.js 旨在拥有一流的开发人员体验和许多内置功能，例如：
-● 一个直观的基于页面的路由系统（支持动态路由） 
-● 预渲染，静态生成 (SSG) 和服务器端渲染 (SSR) 在每页的基础上都被支持 
-● 自动代码拆分以加快页面加载速度 
-● 具有优化预取的客户端路由 
-● 内置 CSS 和 Sass 支持，并支持任何 CSS-in-JS 库 
-● 支持快速刷新的开发环境 
-● 使用无服务器函数构建 API 端点的 API 路由 
-● 完全可扩展
-接下来，我们通过一个互动课程将指导您了解如何开始使用 Next.js。 在本教程中，您将通过创建一个非常简单的博客应用来学习 Next.js 的基础知识。
-这是最终的示例：https://next-learn-starter.vercel.app/ ([github source](https://github.com/vercel/next-learn/tree/master/basics/demo))
-做一个自己的blog
-1. 安装必须的环境
-● node.js > 10.13 
-● 安装Git，连接Github
-● 一个代码编辑器
-2. 创建一个Next.js APP
+
+- 一个直观的基于页面的路由系统（支持动态路由） 
+- 预渲染，静态生成 (SSG) 和服务器端渲染 (SSR) 在每页的基础上都被支持 
+- 自动代码拆分以加快页面加载速度 
+- 具有优化预取的客户端路由 
+- 内置 CSS 和 Sass 支持，并支持任何 CSS-in-JS 库 
+- 支持快速刷新的开发环境 
+- 使用无服务器函数构建 API 端点的 API 路由 
+- 完全可扩展
+
+**接下来，我们通过一个互动课程将指导您了解如何开始使用 Next.js。 在本教程中，您将通过创建一个非常简单的博客应用来学习 Next.js 的基础知识。**
+
+这是最终的示例：[https://next-learn-starter.vercel.app/](https://next-learn-starter.vercel.app/) ([[github source](https://github.com/vercel/next-learn/tree/master/basics/demo)](https://github.com/vercel/next-learn/tree/master/basics/demo))
+
+### 做一个自己的blog
+
+#### 1. 安装必须的环境
+
+- node.js > 10.13 
+- 安装Git，连接Github
+- 一个代码编辑器
+
+#### 2. 创建一个Next.js APP
+
 npx create-next-app@latest nextjs-blog --use-npm --example "https://github.com/vercel/next-learn/tree/master/basics/learn-starter"
-如果有任何问题：请open：https://github.com/vercel/next-learn/blob/master/basics/errors/install.md
+
+*如果有任何问题：请open：*https://github.com/vercel/next-learn/blob/master/basics/errors/install.md
+
 1. 我们进入nextjs-blog文件夹
 2. 运行npm run dev 你会看到
+
+![img](https://cdn.nlark.com/yuque/0/2023/png/21765913/1678353055228-c32c09c4-5348-4421-ad7f-39b333b54bd2.png)
 
 1. 我们进入pages/index修改Welcome to为Learn，我们再次进入游览器，我们会发现游览器页面已经自动把内容更新，这就是Next.js 开发服务器启用了快速刷新。当您对文件进行更改时，Next.js 几乎立即自动在浏览器中应用更改。无需刷新！这将帮助您快速迭代您的应用程序。**这是一个对开发者非常友好，非常实用的功能
 2. 让我们探索如何向我们的应用程序添加更多页面，并且实现页面之间的导航
 3. 在 Next.js 中，页面是从 pages 目录中的文件导出的 React 组件。页面根据其文件名与路由相关联。例如，在开发中：pages/index.js 与/路由相关联。
 4. 我们在pages下创建post目录，在post目录下创建first-post.js文件，并写code如下👇👇
+
+```plain
 export default function FirstPost() {
-  return <h1>First Post</h1>;
+  return <h1>First Post</h1>;
 }
+```
+
 1. 我们输入地址：http://localhost:3000/post/first-post可以看见👇👇
 
-3. 导航两个页面
+![img](https://cdn.nlark.com/yuque/0/2023/png/21765913/1678353055216-3da39617-ef2d-49c4-957d-968819062401.png)
+
+#### 3. 导航两个页面
+
 1. 接下来，让我们实用link来导航两个页面。Next提供了Link标签，可以帮我们实现页面导航，并且它能接受可以让您更好地控制导航行为的道具。
 2. 我们修改post/frist.js代码
+
+```plain
 import Link from 'next/link';
 export default function FirstPost() {
-  return(
+  return(
     <h1 className="title">
-      Welcome to <Link href="/">go back</Link>
-    </h1>
+      Welcome to <Link href="/">go back</Link>
+    </h1>
   )}
+```
+
 1. 我们就可以点击实现页面跳转会主页，你可以在主页加一个跳转到此页面的Link,这样就实现页面间的跳转
-  a. 这里有一个知识点：Link 组件支持在同一个 Next.js 应用程序中的两个页面之间进行客户端导航。 客户端导航意味着页面转换使用 JavaScript 进行，这比浏览器完成的默认导航更快。
-  b. 如果您需要链接到 Next.js 应用程序之外的外部页面，只需使用不带链接的a标签即可。
-  c. Link组件会记录我们访问的URL,当我们再次进入，不会重复请求静态资源，你可以打开游览器的Network验证
-2. next.js还会帮我们进行代码拆分和预取，
-  a. 代码拆分：Next.js 自动进行代码拆分，因此每个页面只加载该页面所需的内容。这意味着在呈现主页时，最初不会提供其他页面的代码。 这确保即使您有数百个页面，主页也能快速加载。 仅加载您请求的页面的代码也意味着页面变得孤立。如果某个页面抛出错误，应用程序的其余部分仍然可以工作。
-  b. 预取：在 Next.js 的生产构建中，只要 Link 组件出现在浏览器的视口中，Next.js 就会自动在后台预取链接页面的代码。当您点击链接时，目标页面的代码已经在后台加载，页面转换几乎是即时的！
-  c. 总结一下：Next.js 通过代码拆分、客户端导航和预取（在生产中）自动优化您的应用程序以获得最佳性能。 您将路由创建为页面下的文件，并使用内置的链接组件。不需要路由库。
-4. 资产，元数据，CSS
-Next.js 内置了对 CSS 和 Sass 的支持，我们将使用 CSS。 本课还将讨论 Next.js 如何处理图像等静态资产和标签等页面元数据。
-本小节结束 你会学习到
-● 如何将静态文件（图像等）添加到 Next.js。 
-● 如何自定义每个页面中的内容。 
-● 如何创建使用 CSS 模块设置样式的可重用 React 组件。 
-● 如何在 pages/_app.js 中添加全局 CSS。 
-● 在 Next.js 中设置样式的一些有用技巧。
-1. 资产
-Next.js 可以在顶级公共目录public下提供静态资产，如图像。 public中的文件可以从类似于页面的应用程序的根目录中引用。 公共目录对于 robots.txt、Google 站点验证和任何其他静态资产也很有用。查看[静态文件服务的文档](https://nextjs.org/docs/basic-features/static-file-serving)以了解更多信息。
-确保该目录名为 public。该名称无法更改，并且是唯一用于提供静态资产的目录。
-下载你的资产（建议）
-● 以 .jpg 格式下载您的个人资料图片（或使用此文件）。 
-● 在 public 目录中创建一个 images 目录。 将图片保存为 public/images 目录下的 profile.jpg。
-● 图像大小可以在 400 像素 x 400 像素左右。
-● 您可以直接在 public 目录下删除未使用的 SVG 徽标文件。
-未优化的图片
+
+1. 1. 这里有一个知识点：**Link 组件支持在同一个 Next.js 应用程序中的两个页面之间进行客户端导航。 客户端导航意味着页面转换使用 JavaScript 进行，这比浏览器完成的默认导航更快。**
+   2. 如果您需要链接到 Next.js 应用程序之外的外部页面，只需使用不带链接的a标签即可。
+   3. Link组件会记录我们访问的URL,当我们再次进入，不会重复请求静态资源，你可以打开游览器的Network验证
+
+1. next.js还会帮我们**进行代码拆分和预取**，
+
+1. 1. **代码拆分：**Next.js 自动进行代码拆分，因此每个页面只加载该页面所需的内容。这意味着在呈现主页时，最初不会提供其他页面的代码。 这确保即使您有数百个页面，主页也能快速加载。 仅加载您请求的页面的代码也意味着页面变得孤立。如果某个页面抛出错误，应用程序的其余部分仍然可以工作。
+   2. **预取：**在 Next.js 的生产构建中，只要 Link 组件出现在浏览器的视口中，Next.js 就会自动在后台预取链接页面的代码。当您点击链接时，目标页面的代码已经在后台加载，页面转换几乎是即时的！
+   3. **总结一下：**Next.js 通过代码拆分、客户端导航和预取（在生产中）自动优化您的应用程序以获得最佳性能。 您将路由创建为页面下的文件，并使用内置的链接组件。不需要路由库。
+
+#### 4. 资产，元数据，CSS
+
+*Next.js 内置了对 CSS 和 Sass 的支持，我们将使用 CSS。 本课还将讨论 Next.js 如何处理图像等静态资产和标签等页面元数据。*
+
+##### 本小节结束 你会学习到
+
+- 如何将静态文件（图像等）添加到 Next.js。 
+- 如何自定义每个页面中的内容。 
+- 如何创建使用 CSS 模块设置样式的可重用 React 组件。 
+- 如何在 pages/_app.js 中添加全局 CSS。 
+- 在 Next.js 中设置样式的一些有用技巧。
+
+##### 1. 资产
+
+*Next.js 可以在顶级公共目录**public**下提供静态资产，如图像。* *public**中的文件可以从类似于页面的应用程序的根目录中引用。 公共目录对于 robots.txt、Google 站点验证和任何其他静态资产也很有用。查看*[[静态文件服务的文档](https://nextjs.org/docs/basic-features/static-file-serving)](https://nextjs.org/docs/basic-features/static-file-serving)*以了解更多信息。*
+
+**确保该目录名为 public。该名称无法更改，并且是唯一用于提供静态资产的目录。**
+
+###### 下载你的资产（建议）
+
+- 以 .jpg 格式下载您的个人资料图片（或使用此文件）。 
+- 在 public 目录中创建一个 images 目录。 将图片保存为 public/images 目录下的 profile.jpg。
+- 图像大小可以在 400 像素 x 400 像素左右。
+- 您可以直接在 public 目录下删除未使用的 SVG 徽标文件。
+
+###### 未优化的图片
+
 实用img标签加载图片资源，你会遇到👇👇
-● 确保您的图像在不同的屏幕尺寸上响应
-● 使用第三方工具或库优化图像 
-● 仅在图像进入视口时加载图像
+
+- 确保您的图像在不同的屏幕尺寸上响应
+- 使用第三方工具或库优化图像 
+- 仅在图像进入视口时加载图像
+
 Next提供一个开箱即用的Image 组件给我们
-图像组件和图像优化
+
+###### 图像组件和图像优化
+
 next/image 是 HTML 元素的扩展，为现代网络而发展。 Next.js 还默认支持图像优化。这允许在浏览器支持时以 WebP 等现代格式调整大小、优化和提供图像。这避免了将大图像传送到具有较小视口的设备。它还允许 Next.js 自动采用未来的图像格式并将它们提供给支持这些格式的浏览器。 自动图像优化适用于任何图像源。即使图像由外部数据源（如 CMS）托管，仍然可以对其进行优化。
-使用图像组件
+
+###### 使用图像组件
+
 Next.js 不是在构建时优化图像，而是在用户请求时按需优化图像。与静态站点生成器和纯静态解决方案不同，您的构建时间不会增加，无论是运送 10 张图像还是 1000 万张图像。 默认情况下图像是延迟加载的。这意味着您的页面速度不会因视口外的图像而受到影响。图像在滚动到视口中时加载。 图像总是以避免累积布局偏移的方式呈现，这是谷歌将在搜索排名中使用的 Core Web Vital。 这是一个使用 next/image 来显示我们的个人资料图片的示例。 height 和 width 属性应该是所需的渲染大小，纵横比与源图像相同。 注意：我们后面在“润色布局”中会用到这个组件，暂时不用复制。下面是示例代码👇👇
+
+```plain
 import Image from 'next/image';
 
 const YourComponent = () => (
-  <Image
-    src="/images/profile.jpg" // Route of the image file
-    height={144} // Desired size with correct aspect ratio
-    width={144} // Desired size with correct aspect ratio
-    alt="Your Name"
-  />
+  <Image
+    src="/images/profile.jpg" // Route of the image file
+    height={144} // Desired size with correct aspect ratio
+    width={144} // Desired size with correct aspect ratio
+    alt="Your Name"
+  />
 );
-2. 元数据
-如果我们想修改页面的元数据，比如 HTML的<meta>,<title>等 标签怎么办？
-我们可以使用 next/head 模块导入的 Head 组件。
+```
+
+##### 2. 元数据
+
+*如果我们想修改页面的元数据，比如 HTML的**<meta>**,**<title>**等 标签怎么办？*
+
+*我们可以使用* *next/head* *模块导入的 Head 组件。*
+
 示例代码：
+
+```plain
 import Head from 'next/head';
 <Head>
-  <title>Create Next App</title>
-  <link rel="icon" href="/favicon.ico" />
+  <title>Create Next App</title>
+  <link rel="icon" href="/favicon.ico" />
 </Head>
+```
+
 我们可以修改我们的帖子页面(post.first-post.js)代码👇👇
+
+```plain
 import Head from 'next/head';
 export default function FirstPost() {
-  return (
-    <>
-      <Head>
-        <title>First Post哈哈</title>
-      </Head>
-      <h1>First Post</h1>
-      <h2>
-        <Link href="/">← Back to home</Link>
-      </h2>
-    </>
+  return (
+    <>
+      <Head>
+        <title>First Post哈哈</title>
+      </Head>
+      <h1>First Post</h1>
+      <h2>
+        <Link href="/">← Back to home</Link>
+      </h2>
+    </>
   );
 }
+```
+
 我们可以看到👇👇
 
-3. 第三方JavaScript
-第三方 JavaScript 是指从第三方来源添加的任何脚本。通常，包含第三方脚本是为了将更新的功能引入不需要从头开始编写的站点，例如分析、广告和客户支持小部件。
+![img](https://cdn.nlark.com/yuque/0/2023/png/21765913/1678353055212-210d0e4c-21eb-48c6-b8a2-a6a1a11b8d62.png)
+
+##### 3. 第三方JavaScript
+
+*第三方 JavaScript 是指从第三方来源添加的任何脚本。通常，包含第三方脚本是为了将更新的功能引入不需要从头开始编写的站点，例如分析、广告和客户支持小部件。*
+
 除了元数据之外，需要尽快加载和执行的脚本通常被添加到页面中。使用常规 HTML 元素，将添加一个外部脚本，如下所示👇👇
+
+```plain
 <Head>
-  <title>First Post</title>
-  <script src="https://connect.facebook.net/en_US/sdk.js" />
+  <title>First Post</title>
+  <script src="https://connect.facebook.net/en_US/sdk.js" />
 </Head>
+```
+
 但是我们使用JavaScript的script标签引入第三方JavaScript，但以这种方式包含脚本并不能清楚地说明何时加载相对于在同一页面上获取的其他 JavaScript 代码。如果特定脚本会阻塞呈现并且会延迟页面内容的加载，这会显着影响性能。
-使用Script组件
+
+###### 使用Script组件
+
 next/script 是 HTML<script> 元素的扩展，并在获取和执行其他脚本时进行优化。 在同一文件中，在文件开头添加 Script 从 next/script 导入，现在我们可以通过Script 来加入脚本👇👇
+
+```plain
 <Script
-    src="https://connect.facebook.net/en_US/sdk.js"
-    strategy="lazyOnload"
-    onLoad={() =>
-      console.log(`script loaded correctly, window.FB has been populated`)
-    }
-  />
+    src="https://connect.facebook.net/en_US/sdk.js"
+    strategy="lazyOnload"
+    onLoad={() =>
+      console.log(`script loaded correctly, window.FB has been populated`)
+    }
+  />
+```
+
 脚本组件中定义了一些附加属性： 
-● 策略控制第三方脚本何时加载。 lazyOnload 的值告诉 Next.js 在浏览器空闲时间延迟加载这个特定的脚本 
-● onLoad 用于在脚本完成加载后立即运行任何 JavaScript 代码。在此示例中，我们向控制台记录一条消息，指出脚本已正确加载
-4. CSS样式
+
+- 策略控制第三方脚本何时加载。 lazyOnload 的值告诉 Next.js 在浏览器空闲时间延迟加载这个特定的脚本 
+- onLoad 用于在脚本完成加载后立即运行任何 JavaScript 代码。在此示例中，我们向控制台记录一条消息，指出脚本已正确加载
+
+##### 4. CSS样式
+
 如您所见，我们的索引页面 (http://localhost:3000/) 已经有了一些样式。如果查看文件结构，您会看到一个名为 styles 的文件夹，其中包含两个 CSS 文件：一个全局样式表 (globals.css) 和一个 CSS 模块 (Home.module.css)。 
+
 除了 CSS 模块之外，您还可以通过多种方式设置 Next.js 应用程序的样式，包括： Sass 允许您导入 .css 和 .scss 文件。 PostCSS 库，例如 Tailwind CSS。 CSS-in-JS库，例如 styled-jsx、styled-components 和 emotion 在本课中，我们将讨论如何在 Next.js 中使用 CSS 模块和 Sass。让我们开始吧！
-知识点
+
+###### 知识点
+
 PostCSS 是一个基于 JavaScript 的 CSS 处理器，它可以帮助开发者编写更加高效、简洁、易于维护的 CSS 代码。它通过使用插件（plugins）来处理 CSS，从而实现不同的功能。
+
 PostCSS 的插件可以用于以下场景：
+
 1. 提供 CSS 预处理器的功能，比如支持变量、嵌套等特性；
 2. 提供浏览器兼容性的解决方案，比如自动添加浏览器前缀；
 3. 提供更加高效的 CSS 编写方式，比如支持嵌套、简写等语法；
 4. 提供更加灵活的 CSS 处理方式，比如支持条件注释、层级选择器等。
+
 最流行的就是tailwind CSS
+
 https://nextjs.org/learn/basics/assets-metadata-css/layout-component
 
 ---
