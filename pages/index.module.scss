@@ -1,0 +1,27 @@
+.image {
+  border-radius: 13px;
+}
+
+.text {
+  margin-bottom: 30px;
+  padding-top: 30px;
+  p {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+  }
+  .sentence{
+    font-size: 1.5em;
+    color: var(--brand);
+    font-style: oblique;
+  }
+  a {
+    color: var(--brand);
+    transition: color 200ms ease-out;
+
+    &:hover,
+    &:focus {
+      color: var(--brandActive);
+    }
+  }
+}
