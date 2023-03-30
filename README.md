@@ -2,7 +2,7 @@
 
 通过 ci 监听 issues 变更，自动更新 mdx 文件到项目 `data/blog/*.mdx` 文件夹中，Vercel 自动化构建更新。
 
-- http://www.zhaoguilv.fun
+- https://blog-chasefunny.vercel.app/blog
 
 ## Features
 
